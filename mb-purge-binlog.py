@@ -56,9 +56,12 @@ def get_coordinates(server, role):
 			return relaylog	
 		else:
 			master_status = res
-			print "Binary logs from Master: %s" %(server)
-			for i in master_status:
-				print "\t %s" %(i['Log_name'])
+			if not options.execute:
+				print "Binary logs from Master: %s" %(server)
+			
+				for i in master_status:
+					print "\t %s" %(i['Log_name'])
+			
 			return master_status
 
 	except MySQLdb.Error, e:
@@ -71,6 +74,7 @@ def master_log_purge(master, Log_name):
 	sql = 'purge binary logs to "%s"' % (Log_name)
 	try:
 		cursor.execute(sql)
+		print 'Binlogs purged up to %s' % (Log_name)
 	except MySQLdb.Error, e:
 		print "MySQL Error [%d]: %s" (e.args[0], e.args[1])
 		sys.exit(1)
@@ -90,7 +94,8 @@ def main():
 			try:
 				mfile = get_coordinates(replica,'replica')
 				replica_files.append(mfile)
-				print "Replica: %s, File: %s" %(replica, mfile)
+				if not options.execute:
+					print "Replica: %s, File: %s" %(replica, mfile)
 			except ValueError, e:
 				print "error! %s" %(e)
 		oldest_file = sorted(replica_files)[0]
