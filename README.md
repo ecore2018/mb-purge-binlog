@@ -27,7 +27,7 @@ By ommitting the `--execute` flag no action will be taken. The last line of the 
 Output
 ``` 
 [moore@localhost ~/scripts/mb-purge-binlog]# ./mb-purge-binlog.py -c ~/.my.cnf -m 192.168.0.25 -r 192.168.0.26
-Binary logs from Master: 91.151.8.227
+Binary logs from Master: 192.168.0.25
 	 mysql-bin.000053
 	 mysql-bin.000054
 	 mysql-bin.000055
@@ -39,7 +39,7 @@ Binary logs from Master: 91.151.8.227
 	 mysql-bin.000061
 	 mysql-bin.000062
 	 mysql-bin.000063
-Replica: 192.168.5.161, File: mysql-bin.000063
+Replica: 192.168.0.26, File: mysql-bin.000063
 Logs will be purged to mysql-bin.000063. Supply --execute to perform the purge
 ```
 
