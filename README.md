@@ -57,7 +57,8 @@ Binlogs purged up to mysql-bin.000063
 
 ## Todo
 Improvements identified at this stage:
-1. Refactor code
-2. Logging
-3. Discover slaves connected to master
-4. username and password arguements 
+
+  1. Refactor code
+  2. Logging
+  3. Discover slaves connected to master
+  4. username and password arguements 
